@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8">
+  <title>Msaidizi wa Matibabu - Maahad Istiqama</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Background Slideshow -->
+  <div id="slideshow">
+    <img src="/" class="active" alt="">
+    <img src="/static/images/pexels-shvetsa-3844581.jpg" alt="">
+    <img src="/static/images/pexels-1222300-2324837.jpg" alt="">
+    <img src="/static/images/pexels-pixabay-40568.jpg" alt="">
+  </div>
+
+  <div class="header">
+    <h1>🏫 MAAHAD ISTIQAMA - TUNGUU ZANZIBAR</h1>
+    <p class="event">🎉 TALENT DAY 2025 🎉</p>
+  </div>
+
+  <div class="container">
+    <h2>🤖 Msaidizi wa Matibabu (Kiswahili)</h2>
+    <p class="tagline">"Teknolojia kwa Afya Bora – Lugha Yetu, Maendeleo Yetu"</p>
+
+    <div id="chatbox"></div>
+
+    <div class="controls">
+      <input id="user-input" placeholder="Andika au sema swali lako hapa..." />
+      <button onclick="sendMessage()">Tuma</button>
+      <button id="mic-btn" onclick="toggleMic()">🎤 Sema</button>
+    </div>
+
+    <audio id="audio" controls hidden></audio>
+  </div>
+
+  <footer>
+    <p>© 2025 Maahad Istiqama - Zanzibar | Imetengenezwa na <strong>Abdulrahman Shaibu Kheir</strong></p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

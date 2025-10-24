@@ -1,0 +1,21 @@
+pip install flask gtts
+python app.py
+
+. How to Host (Free)
+Option 1: Render
+
+Push this project to GitHub
+
+Go to https://render.com
+
+Create New Web Service
+
+Command:
+
+gunicorn app:app
+
+
+After a few minutes → you’ll get a live link like
+https://swahili-medical-assistant.onrender.com
+
+Option 2: Replit (Quickest for testing)
