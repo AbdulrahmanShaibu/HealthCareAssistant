@@ -7,34 +7,22 @@
 </head>
 <body>
 
-<section class="info-section">
-  <div class="card large-card">
-    <h3>Kuhusu Chatbot</h3>
-    <p>
-      Msaidizi wa Matibabu ni programu ya kisasa inayotumia Kiswahili kusaidia kuelewa dalili za kiafya,
-      kutoa ushauri wa msingi wa afya, na kukuunganisha na elimu bora ya afya ya jamii. Imeundwa kusaidia
-      wagonjwa, wanafunzi, na watafiti kuelewa masuala ya afya kwa lugha ya Kiswahili.
-    </p>
-  </div>
+  <!-- 🌐 Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">🩺 Msaidizi wa Afya</div>
+    <ul class="nav-links">
+      <li><a href="#chat-section">Chatbot</a></li>
+      <li><a href="#info-section">Taarifa</a></li>
+      <li><button id="theme-toggle">🌙</button></li>
+      <li><button id="help-btn" class="help-btn">ℹ️</button></li> <!-- NEW -->
+    </ul>
+  </nav>
 
-  <div class="row-cards">
-    <div class="card">
-      <h3>Jinsi ya Kutumia</h3>
-      <p>
-        Unaweza kuandika au kutumia sauti kuuliza maswali kuhusu afya. Bonyeza 🎤 kuzungumza moja kwa moja,
-        au andika ujumbe wako kisha bonyeza “Tuma”. Mfumo utajibu papo hapo kwa maandishi na sauti.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Angalizo la Kiafya</h3>
-      <p>
-        Chatbot huyu haitoi tiba rasmi. Ushauri wake ni wa elimu tu. Kwa dalili sugu au hatarishi,
-        tafadhali tembelea hospitali au mtaalamu wa afya aliye karibu nawe.
-      </p>
-    </div>
+  <!-- 🌀 Loading Screen -->
+  <div id="loader">
+    <div class="spinner"></div>
+    <p>Inapakia Msaidizi wa Matibabu...</p>
   </div>
-</section>
 
   <!-- Background Slideshow -->
   <div id="slideshow">
@@ -49,7 +37,38 @@
     <p class="event">🎉 TALENT DAY 2025 🎉</p>
   </div>
 
-  <div class="container">
+  <!-- Info Section -->
+  <section id="info-section" class="info-section">
+    <div class="card large-card fade-in">
+      <h3>Kuhusu Chatbot</h3>
+      <p>
+        Msaidizi wa Matibabu ni programu ya kisasa inayotumia Kiswahili kusaidia kuelewa dalili za kiafya,
+        kutoa ushauri wa msingi wa afya, na kukuunganisha na elimu bora ya afya ya jamii. Imeundwa kusaidia
+        wagonjwa, wanafunzi, na watafiti kuelewa masuala ya afya kwa lugha ya Kiswahili.
+      </p>
+    </div>
+
+    <div class="row-cards">
+      <div class="card fade-in">
+        <h3>Jinsi ya Kutumia</h3>
+        <p>
+          Unaweza kuandika au kutumia sauti kuuliza maswali kuhusu afya. Bonyeza 🎤 kuzungumza moja kwa moja,
+          au andika ujumbe wako kisha bonyeza “Tuma”. Mfumo utajibu papo hapo kwa maandishi na sauti.
+        </p>
+      </div>
+
+      <div class="card fade-in">
+        <h3>Angalizo la Kiafya</h3>
+        <p>
+          Chatbot huyu haitoi tiba rasmi. Ushauri wake ni wa elimu tu. Kwa dalili sugu au hatarishi,
+          tafadhali tembelea hospitali au mtaalamu wa afya aliye karibu nawe.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chatbot Section -->
+  <section id="chat-section" class="container">
     <h2>🤖 Msaidizi wa Matibabu (Kiswahili)</h2>
     <p class="tagline">"Teknolojia kwa Afya Bora – Lugha Yetu, Maendeleo Yetu"</p>
 
@@ -62,10 +81,37 @@
     </div>
 
     <audio id="audio" controls hidden></audio>
+  </section>
+
+  <!-- Floating Chat Toggle -->
+  <button id="chat-toggle" class="chat-toggle">💬</button>
+
+  <!-- 💬 HELP MODAL -->
+  <div id="help-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>ℹ️ Kuhusu Msaidizi wa Matibabu</h2>
+      <p>
+        Msaidizi wa Matibabu ni mfumo wa akili bandia (AI) uliotengenezwa kusaidia jamii ya Kiswahili
+        kupata elimu ya afya kwa urahisi. Unaweza kuuliza kuhusu dalili, kujifunza afya ya akili,
+        au kupata mwongozo wa matibabu ya msingi.
+      </p>
+      <h3>🩺 Jinsi ya Kutumia</h3>
+      <ul>
+        <li>Bonyeza “🎤 Sema” kuzungumza moja kwa moja.</li>
+        <li>Au andika swali lako kwenye kisanduku na bonyeza “Tuma”.</li>
+        <li>Chatbot itajibu papo hapo kwa maandishi na sauti.</li>
+      </ul>
+      <h3>📞 Mawasiliano</h3>
+      <p>Developer: <strong>Abdulrahman Shaibu Kheir</strong><br>
+         Barua pepe: <a href="mailto:kheria048@gmail.com">kheria048@gmail.com</a><br>
+         Simu: 0675 704 982
+      </p>
+    </div>
   </div>
 
   <footer>
-    <p>© 2025 Maahad Istiqama - Zanzibar | Imetengenezwa na <strong>Abdulrahman Shaibu Kheir | 0675704982</strong></p>
+    <p>© 2025 Maahad Istiqama - Zanzibar | Imetengenezwa na <strong>Abdulrahman Shaibu Kheir</strong></p>
   </footer>
 
   <script src="/static/script.js"></script>
