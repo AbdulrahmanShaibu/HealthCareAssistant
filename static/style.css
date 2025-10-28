@@ -168,57 +168,98 @@ footer {
     }
 
 ‎/* Info section (cards container) */
+/* Info section container */
 .info-section {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 20px auto;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px auto;
   width: 90%;
-  gap: 20px;
+  gap: 25px;
 }
 
-/* Individual card */
-.card {
-  background: #ffffff;
-  border-radius: 15px;
-  width: 280px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+/* Big first card */
+.large-card {
+  width: 95%;
+  max-width: 900px;
+  background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect */
-.card:hover {
+.large-card h3 {
+  color: #21618c;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.large-card p {
+  color: #2c3e50;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.large-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Two smaller cards row */
+.row-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  width: 100%;
+}
+
+.row-cards .card {
+  background: #ffffff;
+  border-radius: 15px;
+  width: 320px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.row-cards .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
-/* Card title */
-.card h3 {
+.row-cards .card h3 {
   color: #21618c;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-size: 18px;
 }
 
-/* Card text */
-.card p {
+.row-cards .card p {
   color: #2c3e50;
   font-size: 15px;
   line-height: 1.5;
-  margin: 0;
 }
 
-/* Responsive: make cards full-width on small screens */
-@media (max-width: 600px) {
-  .card {
-    width: calc(100% - 40px); /* keep side padding */
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .large-card {
+    width: 100%;
+    padding: 20px;
   }
 
-  .info-section {
-    gap: 12px;
-    width: 95%;
+  .row-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .row-cards .card {
+    width: 90%;
   }
 }
+
 
 /* .image{
 background-image: url('/static/images/pexels-1222300-2324837.jpg');
