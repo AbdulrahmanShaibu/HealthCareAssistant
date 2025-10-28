@@ -78,4 +78,10 @@ closeBtn.addEventListener('click', () => {
 window.addEventListener('click', (e) => {
   if (e.target === modal) modal.style.display = 'none';
 });
+
+window.addEventListener("load", () => {
+  const loader = document.querySelector(".loading-screen");
+  setTimeout(() => loader.style.display = "none", 3500);
+});
+    
       
