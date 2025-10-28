@@ -63,3 +63,19 @@ async function sendMessage() {
       slides[currentSlide].classList.add("active");
     }
     setInterval(nextSlide, 6000); // change image every 6 second
+
+// ===== HELP MODAL FUNCTIONALITY =====
+const helpBtn = document.getElementById('help-btn');
+const modal = document.getElementById('help-modal');
+const closeBtn = document.querySelector('.close-btn');
+
+helpBtn.addEventListener('click', () => {
+  modal.style.display = 'flex';
+});
+closeBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+window.addEventListener('click', (e) => {
+  if (e.target === modal) modal.style.display = 'none';
+});
+      
