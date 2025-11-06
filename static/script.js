@@ -1,3 +1,4 @@
+<script>
 let recognizing = false;
 let recognition;
 
@@ -29,59 +30,78 @@ function toggleMic() {
   else recognition.start();
 }
 
+// ✅ FIXED sendMessage FUNCTION (compatible with Flask Base64 response)
 async function sendMessage() {
   const input = document.getElementById("user-input");
   const chatbox = document.getElementById("chatbox");
   const message = input.value.trim();
   if (!message) return;
 
+  // show user message
   chatbox.innerHTML += `<div class='message user'><b>Wewe:</b> ${message}</div>`;
   input.value = "";
-
-  const res = await fetch("/ask", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({message})
-  });
-
-  const data = await res.json();
-  chatbox.innerHTML += `<div class='message bot'><b>AI:</b> ${data.response}</div>`;
   chatbox.scrollTop = chatbox.scrollHeight;
 
-  const audio = document.getElementById("audio");
-  audio.src = data.audio + "?v=" + new Date().getTime();
-  audio.hidden = false;
-  audio.play();
+  try {
+    const res = await fetch("/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message }),
+    });
+
+    const data = await res.json();
+
+    // show bot message
+    chatbox.innerHTML += `<div class='message bot'><b>AI:</b> ${data.response}</div>`;
+    chatbox.scrollTop = chatbox.scrollHeight;
+
+    // ✅ play audio safely if exists (Base64)
+    if (data.audio) {
+      try {
+        const audio = new Audio("data:audio/mp3;base64," + data.audio);
+        audio.play().catch((err) => console.warn("Audio play issue:", err));
+      } catch (err) {
+        console.error("Audio error:", err);
+      }
+    } else {
+      console.warn("No audio found in response");
+    }
+
+  } catch (error) {
+    console.error("Error communicating with server:", error);
+    chatbox.innerHTML += `<div class='message bot error'><b>AI:</b> ⚠️ Samahani, kuna tatizo la mawasiliano. Jaribu tena.</div>`;
+  }
 }
 
- const slides = document.querySelectorAll("#slideshow img");
-    let currentSlide = 0;
+// ===== SLIDESHOW FUNCTIONALITY =====
+const slides = document.querySelectorAll("#slideshow img");
+let currentSlide = 0;
 
-    function nextSlide() {
-      slides[currentSlide].classList.remove("active");
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add("active");
-    }
-    setInterval(nextSlide, 6000); // change image every 6 second
+function nextSlide() {
+  slides[currentSlide].classList.remove("active");
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add("active");
+}
+setInterval(nextSlide, 6000); // change image every 6 seconds
 
 // ===== HELP MODAL FUNCTIONALITY =====
-const helpBtn = document.getElementById('help-btn');
-const modal = document.getElementById('help-modal');
-const closeBtn = document.querySelector('.close-btn');
+const helpBtn = document.getElementById("help-btn");
+const modal = document.getElementById("help-modal");
+const closeBtn = document.querySelector(".close-btn");
 
-helpBtn.addEventListener('click', () => {
-  modal.style.display = 'flex';
+helpBtn.addEventListener("click", () => {
+  modal.style.display = "flex";
 });
-closeBtn.addEventListener('click', () => {
-  modal.style.display = 'none';
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
 });
-window.addEventListener('click', (e) => {
-  if (e.target === modal) modal.style.display = 'none';
+window.addEventListener("click", (e) => {
+  if (e.target === modal) modal.style.display = "none";
 });
 
+// ===== LOADING SCREEN FUNCTIONALITY =====
 window.addEventListener("load", () => {
   const loader = document.querySelector(".loading-screen");
-  setTimeout(() => loader.style.display = "none", 3500);
+  setTimeout(() => (loader.style.display = "none"), 3500);
 });
-    
-      
+</script>
