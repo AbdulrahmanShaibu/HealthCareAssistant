@@ -61,6 +61,11 @@ def ask():
 
     return jsonify({"response": response, "audio": audio_base64})
 
+# --- Keep server alive (Render workaround) ---
+@app.route("/ping")
+def ping():
+    return "pong"
+
 # --- Run app ---
 if __name__ == "__main__":
     app.run(debug=True)
